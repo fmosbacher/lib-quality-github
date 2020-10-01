@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const { indexRoute, issuesRoutes } = require('./routes');
 
 const app = express();
@@ -12,6 +13,7 @@ app.set('port', process.env.PORT);
 // Middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({ origin: '*' }));
 
 // Routes
 app.use('/', indexRoute);
