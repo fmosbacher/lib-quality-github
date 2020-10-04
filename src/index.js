@@ -1,14 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
 const cors = require('cors');
-const { indexRoute, issuesRoutes } = require('./routes');
+const cron = require('node-cron');
+const { saveHistory } = require('./jobs');
+const { indexRoute, issuesRoutes, historyRoutes } = require('./routes');
 
 const app = express();
-dotenv.config();
-
-// App configs
-app.set('port', process.env.PORT);
 
 // Middlewares
 app.use(bodyParser.json());
@@ -18,7 +15,22 @@ app.use(cors({ origin: '*' }));
 // Routes
 app.use('/', indexRoute);
 app.use('/issues', issuesRoutes);
+app.use('/history', historyRoutes);
 
-app.listen(app.get('port'), () => {
-  console.log(`Server listening on port ${app.get('port')}`);
+/**
+ *
+ *
+ *
+ *
+ *
+ *
+ * Mudar o schedule
+ */
+
+cron.schedule('* * * * *', saveHistory);
+
+const port = process.env.APP_PORT;
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });

@@ -5,6 +5,6 @@ const issuesRoutes = Router();
 
 issuesRoutes
   .route('/')
-  .get(issuesController.getMetrics);
+  .get([issuesController.getMetrics, issuesController.saveUserVisit]);
 
 module.exports = issuesRoutes;
