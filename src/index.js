@@ -17,17 +17,7 @@ app.use('/', indexRoute);
 app.use('/issues', issuesRoutes);
 app.use('/history', historyRoutes);
 
-/**
- *
- *
- *
- *
- *
- *
- * Mudar o schedule
- */
-
-cron.schedule('* * * * *', saveHistory);
+cron.schedule('0 0 * * *', saveHistory);
 
 const port = process.env.APP_PORT;
 
