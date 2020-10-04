@@ -1,13 +1,6 @@
 version: '3'
 
 services:
-  node:
-    container_name: node_backend
-    image: lib_quality_node
-    ports:
-      - ${APP_PORT}:5000
-    depends_on:
-      - postgres
 
   postgres:
     container_name: postgres_db
@@ -17,6 +10,3 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - ${POSTGRES_PORT}:5432
-    volumes:
-      - postgres_db:
-          external: true
