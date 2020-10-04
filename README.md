@@ -13,7 +13,12 @@ Busque por métricas e histórico de repositórios do GitHub.
 
 ## Arquitetura
 Diagrama geral da solução:
+
 ![Diagrama da arquitetura](docs/architecture.png)
+
+Modelagem do banco de dados:
+
+![Diagrama banco](docs/database_diagram.png)
 
 A aplicação utiliza o framework express e é dividida entre os módulos:
 - Routes: é reponsável pelo roteamento das chamadas à API, essas requisições são enviadas para o controlador correto de acordo com a entidade do endpoint e o método HTTP.
