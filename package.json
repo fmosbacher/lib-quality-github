@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "nodemon -L -r dotenv/config src/index.js",
-    "test": "echo 'Will be implemented soon...'",
+    "test": "jest --forceExit",
     "migrate:dev": "knex --env development migrate:latest",
     "migrate": "knex --env production migrate:latest"
   },
@@ -16,7 +16,9 @@
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.4"
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "supertest": "^5.0.0"
   },
   "dependencies": {
     "axios": "^0.20.0",

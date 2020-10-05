@@ -16,7 +16,12 @@ const getMetrics = async (req, res) => {
 
     const metrics = await db.select('*').from('history').where({ id_repo: repos[0].id });
 
-    return res.json(metrics);
+    return res.json(metrics.map((metric) => ({
+      createdAt: metric.created_at,
+      count: metric.open_issues_count,
+      avgLifetimeInDays: metric.avg_issues_lifetime,
+      stdLifetimeInDays: metric.std_issues_lifetime,
+    })));
   } catch (err) {
     return res.status(500).json({ message: 'Could not reach database' });
   }

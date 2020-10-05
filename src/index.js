@@ -17,10 +17,12 @@ app.use('/', indexRoute);
 app.use('/issues', issuesRoutes);
 app.use('/history', historyRoutes);
 
-cron.schedule('0 0 * * *', saveHistory);
+cron.schedule('* * * * *', saveHistory);
 
 const port = process.env.APP_PORT;
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+module.exports = app;
