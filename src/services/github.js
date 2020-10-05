@@ -32,7 +32,9 @@ const getIssues = (owner, repo, pagesToFetch) => {
 
 const getLifetimesInDays = async (owner, repo, pagesToFetch) => {
   const githubAPICalls = getIssues(owner, repo, pagesToFetch);
-  const issues = (await Promise.all(githubAPICalls)).map((githubRes) => githubRes.data).flat();
+  const githubRes = await Promise.all(githubAPICalls);
+  const githubData = githubRes.map(({ data }) => data);
+  const issues = githubData.flat();
   return issues.map((issue) => (
     (new Date() - new Date(issue.created_at)) / 1000 / 60 / 60 / 24
   ));

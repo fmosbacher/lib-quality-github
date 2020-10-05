@@ -8,9 +8,10 @@ services:
       - ${APP_PORT}:5000
     depends_on:
       - postgres
+    restart: always
 
   postgres:
-    container_name: postgres_db
+    container_name: postgres
     image: postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -18,5 +19,9 @@ services:
     ports:
       - ${POSTGRES_PORT}:5432
     volumes:
-      - postgres_db:
-          external: true
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  postgres-data:
+    external: true

@@ -77,7 +77,7 @@ docker build -t lib_quality_node .
 
 Caso seja ao primeiro deploy, no servidor, crie o volume docker externo
 ```
-docker volume create --name=postgres_db
+docker volume create --name=postgres-data
 ```
 
 Inicie os serviços da aplicação
