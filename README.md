@@ -98,6 +98,12 @@ Primeiro, inicie o banco de dados
 docker-compose -f docker-compose.dev.yml up
 ```
 
+Inicie as tabelas
+Execute as migrations para criar as tabelas no banco
+```
+yarn migrate:test
+```
+
 Execute os testes da aplicação
 ```
 yarn test

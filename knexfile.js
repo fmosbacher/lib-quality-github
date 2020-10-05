@@ -4,6 +4,16 @@ dotenv.config();
 
 module.exports = {
 
+  test: {
+    client: 'pg',
+    connection: {
+      host: 'localhost',
+      port: process.env.POSTGRES_PORT,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+    },
+  },
+
   development: {
     client: 'pg',
     connection: {
